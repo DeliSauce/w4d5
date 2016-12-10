@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reddit</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <% if current_user %>
+  <%=  current_user.username %>
+  <br>
+  <%= button_to "logout", session_url, method: :delete %>
+  <%  end  %>
+</head>
+<body>
+
+<%= yield %>
+<ul>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error|  %>
+    <li>
+    <%=   error %>
+    </li>
+    <% end %>
+<% end %>
+</ul>
+</body>
+</html>
